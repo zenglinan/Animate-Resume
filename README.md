@@ -5,3 +5,5 @@
 3. 怎么高亮代码（选择器）
 - 法一：用正则匹配，将写入pre的选择器替换成<span style="color:red;">[选择器]</span>
 - 法二：用js库给选择器、属性、函数这些需要高亮的部分包住选中
+4. 代码出现的时候不会自动往下拉
+设置dom.scrollTop = dom.scrollHeight

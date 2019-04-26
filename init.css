@@ -1,0 +1,33 @@
+body, pre {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+}
+#codeContainer,#paper {
+  position: fixed;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  padding: 1%;
+} 
+#codeContainer {
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+#paper {
+  right: 0;
+  top: 0;
+  width: 0%;
+}
+.token.selector {
+  color: #999;
+}
+.token.function {
+  color: #999;
+}
+.token.property {
+  color: #999;
+}
