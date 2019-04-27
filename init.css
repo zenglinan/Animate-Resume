@@ -1,14 +1,16 @@
 body, pre {
   margin: 0;
-  padding: 0;
+  padding: 10px;
+  color: white; /*为什么在这里加了这一句，简历出现的时候最开始就会卡顿，去掉这一句就不会*/
 }
 body {
   height: 100vh;
+  box-sizing: border-box;
 }
 #codeContainer,#paper {
   position: fixed;
   box-sizing: border-box;
-  height: 100%;
+  height: 95%;
   overflow: auto;
   padding: 1%;
 } 

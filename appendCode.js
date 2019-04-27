@@ -15,7 +15,7 @@ let cssCode =
 
 /* 再加个背景色 */
 html {
-  background-color: rgb(222,225,230);
+  background-color: rgb(0,43,54);
 }
 
 /* 看起来页面的边距需要宽一点 */
@@ -40,13 +40,23 @@ html {
   box-shadow: 0 0 4px 3px rgba(0,0,0,.3);
 }
 
-/* 接下来在右边准备一张白纸，开始写简历了 */
+/* 接下来在右边准备一张白纸 */
 #codeContainer,#paper {
-  width: 50%;
+  width: 48%;
 }
 #paper {
   background-color: white;
 }
+
+/* 调整一下位置 */
+#codeContainer {
+  left: 15px;
+  top: 15px;
+}
+#paper {
+  right: 15px;
+  top: 15px;
+} 
 `
 let timer = setInterval(function () {
   if(codeIndex >= cssCode.length){
@@ -56,4 +66,4 @@ let timer = setInterval(function () {
   cssContainer.innerHTML = cssCode.slice(0,codeIndex); // 写入style，作为样式
   codeContainer.scrollTop = codeContainer.scrollHeight;
   codeIndex ++;
-},10)
+},40)
