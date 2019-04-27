@@ -18,13 +18,10 @@ html {
   background-color: rgb(0,43,54);
 }
 
-/* 看起来页面的边距需要宽一点 */
-#codeContainer {
-  padding: 10px 16px;
-  border: 1px solid #aaa;
-}
-
 /* 做一些代码高亮 */
+body {
+  color: rgb(215,215,215);
+}
 .token.selector {
   color: rgb(243, 143, 192);
 }
@@ -33,6 +30,12 @@ html {
 }
 .token.property {
   color: rgb(66, 186, 96);
+}
+
+/* 看起来页面的边距需要宽一点 */
+#codeContainer {
+  padding: 10px 16px;
+  border: 1px solid #aaa;
 }
 
 /* 加一点阴影 */
@@ -50,13 +53,24 @@ html {
 
 /* 调整一下位置 */
 #codeContainer {
-  left: 15px;
-  top: 15px;
+  left: 1%;
+  top: 2%;
 }
 #paper {
-  right: 15px;
-  top: 15px;
+  right: 1%;
+  top: 2%;
 } 
+
+/* 把代码区旋转一下 */
+html{
+  perspective: 1000px;
+}
+#codeContainer {
+  -webkit-transition: none;
+  transition: none;
+  -webkit-transform: rotateY(13deg) translateZ(-80px) ;
+          transform: rotateY(13deg) translateZ(-80px) ;
+}
 `
 let timer = setInterval(function () {
   if(codeIndex >= cssCode.length){
@@ -66,4 +80,4 @@ let timer = setInterval(function () {
   cssContainer.innerHTML = cssCode.slice(0,codeIndex); // 写入style，作为样式
   codeContainer.scrollTop = codeContainer.scrollHeight;
   codeIndex ++;
-},40)
+},0)
