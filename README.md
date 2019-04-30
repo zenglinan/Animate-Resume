@@ -7,3 +7,10 @@
 - 法二：用js库给选择器、属性、函数这些需要高亮的部分包住选中
 4. 代码出现的时候不会自动往下拉
 设置dom.scrollTop = dom.scrollHeight
+5. 需要注意：定时器是异步的
+```
+setTimeout(()=>{},20)
+console.log(1)
+
+// 会先执行console
+```

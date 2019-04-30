@@ -77,12 +77,14 @@ let mdCode =
   `
 # 自我介绍
   我叫曾宝浩，毕业于广东工业大学，从大一开始自学前端，希望面试前端开发岗位。
+
 # 掌握技能
 - 熟悉HTML & CSS & JavaScript
 - 熟悉HTTP知识
 - 熟练使用Vue
 - 掌握Scss Webpack Parcel
 - 熟悉Node.js
+
 # 项目介绍
 1. Canvas画板
 2. 动态简历
@@ -94,6 +96,7 @@ let mdCode =
 8. Vue自制 UI 框架
 9. 小程序番茄闹钟
 10. Vue.js 构建的CNODE社区
+
 # 联系方式
 - 手机 15521017704
 - 邮箱 1392767180@qq.com
