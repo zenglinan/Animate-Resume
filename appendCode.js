@@ -1,5 +1,4 @@
-// 为何页面会在写markdown时会出现错乱，但将codeIndex写成writeCss和writeMarkDown内部的局部变量时，就好了？？？
-let codeIndex = 0;
+
 let cssCode =
   `
 /* Hello，这是我制作的一个会动的简历
@@ -77,15 +76,13 @@ html{
 let mdCode =
   `
 # 自我介绍
-我叫曾宝浩，毕业于广东工业大学，从大一开始自学前端，希望面试前端开发岗位。
-
+  我叫曾宝浩，毕业于广东工业大学，从大一开始自学前端，希望面试前端开发岗位。
 # 掌握技能
 - 熟悉HTML & CSS & JavaScript
 - 熟悉HTTP知识
 - 熟练使用Vue
 - 掌握Scss Webpack Parcel
 - 熟悉Node.js
-
 # 项目介绍
 1. Canvas画板
 2. 动态简历
@@ -97,36 +94,38 @@ let mdCode =
 8. Vue自制 UI 框架
 9. 小程序番茄闹钟
 10. Vue.js 构建的CNODE社区
-
 # 联系方式
 - 手机 15521017704
 - 邮箱 1392767180@qq.com
 - QQ 1392767180
 `
 function writeCss(code, callback) {
+  let codeIndex = 0;
   let timer = setInterval(function () {
+    codeContainer.innerHTML = Prism.highlight(cssCode.slice(0, codeIndex), Prism.languages.css, 'CSS'); // 页面显示
+    cssContainer.innerHTML = cssCode.slice(0, codeIndex); // 写入style，作为样式
+    codeContainer.scrollTop = codeContainer.scrollHeight;
+    codeIndex++;
     if (codeIndex >= code.length) {
       clearInterval(timer);
       codeIndex = 0;
       callback && callback();
     }
-    codeContainer.innerHTML = Prism.highlight(cssCode.slice(0, codeIndex), Prism.languages.css, 'CSS'); // 页面显示
-    cssContainer.innerHTML = cssCode.slice(0, codeIndex); // 写入style，作为样式
-    codeContainer.scrollTop = codeContainer.scrollHeight;
-    codeIndex++;
-  }, 20)
+  }, 0)
 }
-function writeMarkdown(code){
+function writeMarkdown(code) {
+  let codeIndex = 0;
   let timer2 = setInterval(function () {
+    paper.innerHTML = marked(code.slice(0, codeIndex));
+    paper.scrollTop = codeContainer.scrollHeight;
+    codeIndex++;
     if (codeIndex >= code.length) {
       window.clearInterval(timer2);
       codeIndex = 0;
     }
-    paper.innerHTML = code.slice(0,codeIndex);
-    codeIndex++;
   }, 20)
 }
-writeCss(cssCode, ()=>{
+writeCss(cssCode, () => {
   writeMarkdown(mdCode);
 })
 
