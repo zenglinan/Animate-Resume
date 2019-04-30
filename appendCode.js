@@ -1,6 +1,7 @@
+// 为何页面会在写markdown时会出现错乱，但将codeIndex写成writeCss和writeMarkDown内部的局部变量时，就好了？？？
 let codeIndex = 0;
-let cssCode = 
-`
+let cssCode =
+  `
 /* Hello，这是我制作的一个会动的简历
 *
 *  在写简历之前，我需要加一些CSS样式
@@ -44,10 +45,11 @@ body {
 }
 
 /* 接下来在右边准备一张白纸 */
-#codeContainer,#paper {
-  width: 48%;
+#codeContainer {
+  width: 40%;
 }
 #paper {
+  width: 52%;
   background-color: white;
 }
 
@@ -68,16 +70,63 @@ html{
 #codeContainer {
   -webkit-transition: none;
   transition: none;
-  -webkit-transform: rotateY(13deg) translateZ(-80px) ;
-          transform: rotateY(13deg) translateZ(-80px) ;
+  -webkit-transform: rotateY(20deg) translateZ(-80px) translateX(20px);
+          transform: rotateY(20deg) translateZ(-80px) translateX(20px);
 }
 `
-let timer = setInterval(function () {
-  if(codeIndex >= cssCode.length){
-    clearInterval(timer);
-  }
-  codeContainer.innerHTML = Prism.highlight(cssCode.slice(0,codeIndex), Prism.languages.css, 'CSS'); // 页面显示
-  cssContainer.innerHTML = cssCode.slice(0,codeIndex); // 写入style，作为样式
-  codeContainer.scrollTop = codeContainer.scrollHeight;
-  codeIndex ++;
-},0)
+let mdCode =
+  `
+# 自我介绍
+我叫曾宝浩，毕业于广东工业大学，从大一开始自学前端，希望面试前端开发岗位。
+
+# 掌握技能
+- 熟悉HTML & CSS & JavaScript
+- 熟悉HTTP知识
+- 熟练使用Vue
+- 掌握Scss Webpack Parcel
+- 熟悉Node.js
+
+# 项目介绍
+1. Canvas画板
+2. 动态简历
+3. 原生JS 华为音乐手机端
+4. Todo List待办事项
+5. Node.js在线备忘录
+6. Vue重构移动端有赞商城
+7. React.js IM即时通讯系统
+8. Vue自制 UI 框架
+9. 小程序番茄闹钟
+10. Vue.js 构建的CNODE社区
+
+# 联系方式
+- 手机 15521017704
+- 邮箱 1392767180@qq.com
+- QQ 1392767180
+`
+function writeCss(code, callback) {
+  let timer = setInterval(function () {
+    if (codeIndex >= code.length) {
+      clearInterval(timer);
+      codeIndex = 0;
+      callback && callback();
+    }
+    codeContainer.innerHTML = Prism.highlight(cssCode.slice(0, codeIndex), Prism.languages.css, 'CSS'); // 页面显示
+    cssContainer.innerHTML = cssCode.slice(0, codeIndex); // 写入style，作为样式
+    codeContainer.scrollTop = codeContainer.scrollHeight;
+    codeIndex++;
+  }, 20)
+}
+function writeMarkdown(code){
+  let timer2 = setInterval(function () {
+    if (codeIndex >= code.length) {
+      window.clearInterval(timer2);
+      codeIndex = 0;
+    }
+    paper.innerHTML = code.slice(0,codeIndex);
+    codeIndex++;
+  }, 20)
+}
+writeCss(cssCode, ()=>{
+  writeMarkdown(mdCode);
+})
+
