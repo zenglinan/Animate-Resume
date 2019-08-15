@@ -98,7 +98,7 @@ let mdCode =
 10. Vue.js 构建的CNODE社区
 
 # 联系方式
-- 手机 15521017704
+- 手机 1xxxxxxxx
 - 邮箱 1392767180@qq.com
 - QQ 1392767180
 `
